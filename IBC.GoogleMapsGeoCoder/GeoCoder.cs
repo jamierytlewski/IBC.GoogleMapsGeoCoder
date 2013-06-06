@@ -12,7 +12,7 @@ namespace IBC.GoogleMapsGeoCoder
     {
         public static Location Geocode(string address)
         {
-            WebRequest request = WebRequest.Create("http://maps.googleapis.com/maps/api/geocode/json?sensor=false&address=" + address);
+            WebRequest request = WebRequest.Create("http://maps.googleapis.com/maps/api/geocode/json?sensor=false&address=" + System.Web.HttpContext.Current.Server.UrlEncode(address));
             WebResponse response = request.GetResponse();
             Stream dataStream = response.GetResponseStream();
             StreamReader reader = new StreamReader(dataStream);
